@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Govind Pathak | Machine learning and data</title>
+<meta name="description" content="Govind Pathak, MSc Artificial Intelligence and Machine Learning graduate from the University of Limerick. Projects in uncertainty-aware machine learning, cloud deployment and data analysis. Open to graduate roles and research positions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23172033'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' text-anchor='middle' fill='%23D5E3F2'%3EGP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#172033;
+    --paper:#F5F7FA;
+    --panel:#FFFFFF;
+    --steel:#2F5D8C;
+    --steel-dark:#244A70;
+    --mist:#D5E3F2;
+    --muted:#4B5870;
+    --line:#D9E0EA;
+    --amber:#9A6412;
+    --amber-bg:#FBF3E2;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
+    --sans:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--steel);text-underline-offset:3px}
+  a:hover{color:var(--steel-dark)}
+  :focus-visible{outline:3px solid var(--steel);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  .skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 12px;border-radius:6px;z-index:10}
+  .skip:focus{left:8px}
+
+  header.top{border-bottom:1px solid var(--line);background:var(--paper)}
+  header.top .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--ink);text-decoration:none}
+  nav a{margin-left:22px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.98rem}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+
+  .hero{padding:64px 0 56px}
+  .hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,5.4vw,4rem);line-height:1.04;letter-spacing:-.01em;margin:0 0 20px}
+  .lead{font-size:1.28rem;line-height:1.5;color:var(--muted);margin:0 0 24px;max-width:34ch}
+  .status{display:flex;gap:10px;align-items:flex-start;margin:0 0 28px;font-weight:500}
+  .status::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:#2E8B57;margin-top:.55em}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{display:inline-block;padding:11px 20px;border-radius:8px;font-weight:600;text-decoration:none;border:1.5px solid var(--steel);color:var(--steel);background:transparent;font-size:1rem}
+  .btn:hover{background:var(--mist);color:var(--steel-dark)}
+  .btn.primary{background:var(--steel);color:#fff}
+  .btn.primary:hover{background:var(--steel-dark);border-color:var(--steel-dark);color:#fff}
+
+  .viz{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+  .viz svg{display:block;width:100%;height:auto}
+  .viz .band{transition:none}
+  .viz.intro .band{animation:rise .9s ease-out both}
+  @keyframes rise{from{opacity:0}to{opacity:1}}
+  .viz label{display:block;font-weight:600;font-size:.95rem;margin:12px 0 4px}
+  .viz input[type=range]{width:100%;accent-color:var(--steel)}
+  .viz .cap{margin:8px 0 0;font-size:.88rem;color:var(--muted)}
+
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.2vw,2.4rem);line-height:1.15;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 36px;max-width:60ch}
+
+  .project{display:grid;grid-template-columns:220px 1fr;gap:12px 40px;padding:30px 0;border-top:1px solid var(--line)}
+  .project:first-of-type{border-top:0;padding-top:6px}
+  .meta{color:var(--muted);font-size:.93rem}
+  .meta strong{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+  .project h3{font-family:var(--serif);font-weight:500;font-size:1.5rem;line-height:1.25;margin:0 0 8px}
+  .project p{margin:0 0 14px;max-width:68ch}
+  dl.facts{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;max-width:68ch}
+  dl.facts dt{font-weight:600}
+  dl.facts dd{margin:0}
+  dl.facts .limits dt{color:var(--amber)}
+  .lim{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:0 18px;background:var(--amber-bg);border-left:4px solid var(--amber);padding:10px 14px;border-radius:0 8px 8px 0;margin-top:6px}
+  .lim dt{color:var(--amber);font-weight:600}
+
+  .cols{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+  .cols h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;margin:0 0 12px}
+  .list{list-style:none;margin:0;padding:0}
+  .list li{padding:10px 0;border-top:1px solid var(--line)}
+  .list li:first-child{border-top:0;padding-top:0}
+  .list b{font-weight:600}
+  .list span{display:block;color:var(--muted);font-size:.95rem}
+
+  .contact p{max-width:56ch;margin:0 0 20px}
+  footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.92rem}
+
+  @media (max-width:860px){
+    .hero{padding:40px 0}
+    .hero .grid{grid-template-columns:1fr;gap:36px}
+    .project{grid-template-columns:1fr;gap:6px}
+    .cols{grid-template-columns:1fr;gap:32px}
+    nav a{margin:0 18px 0 0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .viz.intro .band{animation:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Govind Pathak</a>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="hero" id="top">
+    <div class="wrap grid">
+      <div>
+        <h1>I build and test machine learning systems.</h1>
+        <p class="lead">MSc graduate in artificial intelligence and machine learning. I like finding out how far a model can be trusted, and being honest about where it can&rsquo;t.</p>
+        <p class="status">Open to graduate roles and research positions, including PhD. Based in Limerick, Ireland, and open to relocate.</p>
+        <div class="actions">
+          <a class="btn primary" href="Govind_Pathak_CV.pdf">Download CV</a>
+          <a class="btn" href="https://github.com/Pathak-G">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/pathak-govind">LinkedIn</a>
+          <a class="btn" href="mailto:govindpathak392002@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <div class="viz intro" id="viz">
+        <svg id="chart" viewBox="0 0 520 300" role="img" aria-label="Illustration of a prediction curve with a shaded uncertainty band that gets narrower as more data points are added.">
+          <title>Illustration: uncertainty narrows as data increases</title>
+        </svg>
+        <noscript><p class="cap">This illustration needs JavaScript. It shows an uncertainty band that narrows as more data points are added.</p></noscript>
+        <label for="n">Training points: <output id="nOut">8</output></label>
+        <input id="n" type="range" min="3" max="28" value="8" aria-describedby="cap">
+        <p class="cap" id="cap">Illustration, not real data. The shaded band is the model&rsquo;s uncertainty, and it is widest where it has seen the least data.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects" aria-labelledby="h-projects">
+    <div class="wrap">
+      <h2 id="h-projects">Projects</h2>
+      <p class="sub">Each project lists what I did, the result, and the limits of that result.</p>
+
+      <article class="project">
+        <div class="meta"><strong>MSc dissertation, 2026</strong>Python, PyTorch, Optuna</div>
+        <div>
+          <h3>Probabilistic federated learning for mental health prediction</h3>
+          <p>Built a federated learning pipeline across four clinical groups (obesity, hypertension, diabetes and general), using 36,259 NHANES participants to predict depression from PHQ-9. I implemented Bayesian logistic regression with Laplace-approximated uncertainty for each group and combined the groups by precision weighting, then compared it with FedAvg and an MC Dropout network. Supervised by Prof. Pepijn van de Ven.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>Precision-weighted aggregation matched FedAvg (AUROC 0.699 against 0.701; balanced accuracy 0.644 for both) and added an uncertainty estimate for each group. The MC Dropout network reached 0.651 AUROC against 0.653 for a FedAvg network.</dd>
+            <div class="lim"><dt>Limits</dt><dd>The uncertainty came at no measurable cost to accuracy, but it did not improve accuracy either. The data are survey data, not clinical records.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta"><strong>2026</strong>Python, AWS SageMaker, Lambda, API Gateway, RDS, Bedrock, Flask</div>
+        <div>
+          <h3>Mental health risk prediction on AWS</h3>
+          <p>Deployed a text classifier (TF-IDF with logistic regression, trained on the GoEmotions dataset) as a real-time SageMaker endpoint. A Flask web interface on EC2 calls it, with a serverless backend of Lambda, API Gateway and an RDS MySQL database. Amazon Bedrock generates a plain-language explanation of each prediction. Six AWS services in total.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>A working application from user input to prediction, explanation and stored result.</dd>
+            <div class="lim"><dt>Limits</dt><dd>The explanations are written by a language model. I did not test how faithful they are to what the classifier actually relied on.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta"><strong>2026, group project</strong>Python, XGBoost, scikit-learn, Pandas, weather API</div>
+        <div>
+          <h3>Energy consumption prediction with limited data</h3>
+          <p>I led data preprocessing for a 90,000-row dataset and added weather features (temperature, humidity and wind speed) from an API. We compared XGBoost, linear regression, random forest and gradient boosting, then ran an ablation across training-data fractions.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>XGBoost gave the lowest RMSE (0.6386). Adding synthetic training data made performance worse, which we attributed to distribution mismatch.</dd>
+            <div class="lim"><dt>Limits</dt><dd>One dataset, so the ranking of models may not carry over to other data.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta"><strong>2026, two-person project</strong>Python, TensorFlow, Keras, Gymnasium</div>
+        <div>
+          <h3>DQN against Double DQN on Atari Atlantis</h3>
+          <p>I led a comparison of the two agents over 1,800 episodes. Training was using the GPU poorly, so I traced the cause to a list-based replay buffer and replaced it with a pre-allocated NumPy circular buffer, which fixed the problem and cut memory use.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>Double DQN&rsquo;s 100-episode average score was 14.2% higher.</dd>
+            <div class="lim"><dt>Limits</dt><dd>One game and one training setup, so I would not generalise the 14.2% figure.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="meta"><strong>Group project</strong>Faster R-CNN, ResNet-50 FPN</div>
+        <div>
+          <h3>Bone fracture detection</h3>
+          <p>Trained a Faster R-CNN model with a ResNet-50 FPN backbone to detect fractures in bone images.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>mAP@0.5 of 0.6294.</dd>
+            <div class="lim"><dt>Limits</dt><dd>A coursework model with moderate accuracy. It is not a clinical tool.</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="h-skills">
+    <div class="wrap">
+      <h2 id="h-skills">Skills</h2>
+      <p class="sub">What I use most, in the order I use it.</p>
+      <div class="cols">
+        <div>
+          <h3>Languages and data</h3>
+          <ul class="list">
+            <li><b>Python</b> (main language), SQL, R, C#</li>
+            <li><b>Data work</b><span>Pandas, NumPy, data cleaning, feature engineering, Tableau, Excel (Power Query, pivot tables)</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Machine learning and cloud</h3>
+          <ul class="list">
+            <li><b>Machine learning</b><span>PyTorch, TensorFlow, Keras, scikit-learn, XGBoost, Optuna; Bayesian logistic regression, MC Dropout, federated learning, reinforcement learning</span></li>
+            <li><b>Cloud and tools</b><span>AWS (SageMaker, Lambda, API Gateway, RDS, EC2, Bedrock), Flask, Git</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="background" aria-labelledby="h-background">
+    <div class="wrap">
+      <h2 id="h-background">Background</h2>
+      <p class="sub">Education, work and one publication.</p>
+      <div class="cols">
+        <div>
+          <h3>Education</h3>
+          <ul class="list">
+            <li><b>MSc Artificial Intelligence and Machine Learning</b><span>University of Limerick, 2025 to 2026. First Class Honours, QCA 3.45 out of 4.0.</span></li>
+            <li><b>B.E. Computer Science and Engineering (AI and ML)</b><span>University of Mumbai, 2021 to 2025. First Class Honours, CGPA 8.70 out of 10.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Experience</h3>
+          <ul class="list">
+            <li><b>Education support worker (academic notetaker)</b><span>Servisource at TUS Moylish, from September 2026.</span></li>
+            <li><b>Data science and data analysis intern</b><span>Cognifyz Technologies, remote, June to August 2024. Cleaned and analysed a restaurant dataset.</span></li>
+            <li><b>Tutor and academic mentor</b><span>Wisdom Classes, Mumbai, 2020 to 2025. Maths and Science for Grades 8 to 12.</span></li>
+          </ul>
+        </div>
+      </div>
+      <h3 style="font-family:var(--serif);font-weight:500;font-size:1.3rem;margin:40px 0 12px">Publication and certificates</h3>
+      <ul class="list">
+        <li><b>Streamlining Coding with Pre-Defined Syntax: A Visual Approach to Programming</b><span>International Journal of Research Publication and Reviews, Vol 6, Issue 4, April 2025.</span></li>
+        <li><b>Certificates</b><span>AWS Academy Cloud Foundations and Machine Learning Foundations (2026); IBM AI Fundamentals (2025); Epigeum Research Integrity (2026); NPTEL Natural Language Processing, IIT Kharagpur.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="h-contact">
+    <div class="wrap">
+      <h2 id="h-contact">Contact</h2>
+      <p>I am looking for graduate roles in machine learning, data and software, and for research positions. The quickest way to reach me is email.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:govindpathak392002@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/pathak-govind">LinkedIn</a>
+        <a class="btn" href="https://github.com/Pathak-G">GitHub</a>
+        <a class="btn" href="Govind_Pathak_CV.pdf">Download CV</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Govind Pathak. Last updated October 2026.</div>
+</footer>
+
+<script>
+(function(){
+  var svg = document.getElementById('chart');
+  var slider = document.getElementById('n');
+  var out = document.getElementById('nOut');
+  var viz = document.getElementById('viz');
+  var NS = 'http://www.w3.org/2000/svg';
+  var order = [250,60,420,150,340,480,30,200,380,110,290,460,170,320,400,80,230,360,20,500,130,270,440,50,190,310,410,95];
+  var noise = [6,-8,5,-4,9,-6,4,-7,8,-5,3,-9,6,-3,7,-6,5,-8,4,-5,8,-4,6,-7,3,-6,9,-5];
+  function f(x){ return 150 - 55*Math.sin(x/78) - 22*Math.sin(x/31); }
+  function make(tag, attrs){
+    var el = document.createElementNS(NS, tag);
+    for (var k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+  function draw(n){
+    while (svg.childNodes.length > 1) svg.removeChild(svg.lastChild);
+    var xs = order.slice(0, n);
+    var up = [], lo = [], line = [];
+    for (var x = 10; x <= 510; x += 5){
+      var d = 1e9;
+      for (var i = 0; i < xs.length; i++){ d = Math.min(d, Math.abs(x - xs[i])); }
+      var w = 7 + 66 * (1 - Math.exp(-d / 62));
+      var y = f(x);
+      up.push(x + ',' + (y - w).toFixed(1));
+      lo.unshift(x + ',' + (y + w).toFixed(1));
+      line.push(x + ',' + y.toFixed(1));
+    }
+    svg.appendChild(make('line', {x1:10, y1:280, x2:510, y2:280, stroke:'#B9C6D6', 'stroke-width':1}));
+    svg.appendChild(make('polygon', {'class':'band', points: up.concat(lo).join(' '), fill:'#2F5D8C', 'fill-opacity':'0.18'}));
+    svg.appendChild(make('polyline', {points: line.join(' '), fill:'none', stroke:'#2F5D8C', 'stroke-width':2.5, 'stroke-linejoin':'round'}));
+    for (var j = 0; j < xs.length; j++){
+      var idx = order.indexOf(xs[j]);
+      svg.appendChild(make('circle', {cx:xs[j], cy:(f(xs[j]) + noise[idx]).toFixed(1), r:4.5, fill:'#172033'}));
+    }
+  }
+  draw(+slider.value);
+  slider.addEventListener('input', function(){
+    out.textContent = slider.value;
+    viz.classList.remove('intro');
+    draw(+slider.value);
+  });
+})();
+</script>
+</body>
+</html>
