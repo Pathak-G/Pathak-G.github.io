@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Govind Pathak | Machine learning and data</title>
+<meta name="description" content="Govind Pathak, MSc Artificial Intelligence and Machine Learning graduate from the University of Limerick. Projects in uncertainty-aware machine learning, cloud deployment and data analysis. Open to graduate roles and research positions.">
+<meta property="og:title" content="Govind Pathak | Machine learning and data">
+<meta property="og:description" content="I build and test machine learning systems, and say plainly where they stop working.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23172033'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' text-anchor='middle' fill='%23D5E3F2'%3EGP%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+document.documentElement.classList.add('js');
+(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+document.documentElement.dataset.theme=t;})();
+</script>
+<style>
+:root{
+  --bg:#0D1322;--surface:#141C30;--line:#26314A;--ink:#E8EEF7;--muted:#9FB0C8;
+  --accent:#7DB4F0;--on-accent:#0D1322;--warn:#F2B65C;--warn-bg:rgba(242,182,92,.1);--ok:#5CD6A0;--grid:rgba(125,180,240,.08);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  color-scheme:dark;
+}
+:root[data-theme=light]{
+  --bg:#F5F7FA;--surface:#FFFFFF;--line:#D9E0EA;--ink:#172033;--muted:#4B5870;
+  --accent:#2F5D8C;--on-accent:#FFFFFF;--warn:#8A5A0F;--warn-bg:#FBF3E2;--ok:#1F7A4D;--grid:rgba(47,93,140,.08);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
+a{color:var(--accent);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 12px;border-radius:6px;z-index:30}
+.skip:focus{left:8px}
+
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}
+.brand{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--ink);text-decoration:none}
+nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+nav a{padding:6px 12px;border-radius:99px;color:var(--muted);text-decoration:none;font-weight:500;font-size:.96rem}
+nav a:hover{color:var(--ink)}
+nav a[aria-current=true]{color:var(--on-accent);background:var(--accent)}
+.theme{margin-left:6px;width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.theme:hover{border-color:var(--accent)}
+.theme svg{width:18px;height:18px}
+#bar{position:absolute;left:0;bottom:-1px;height:3px;width:100%;background:var(--accent);transform:scaleX(0);transform-origin:left}
+
+.hero{padding:56px 0 48px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,4.4rem);line-height:1.04;letter-spacing:-.015em;margin:0 0 20px;max-width:17ch}
+.lead{font-size:1.25rem;line-height:1.55;color:var(--muted);margin:0 0 22px;max-width:44ch}
+.status{display:flex;gap:10px;align-items:flex-start;margin:0 0 24px;font-weight:500;max-width:62ch}
+.status::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--ok);margin-top:.55em}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;font:600 1rem var(--sans);text-decoration:none;border:1.5px solid var(--accent);color:var(--accent);background:transparent;cursor:pointer}
+.btn:hover{background:color-mix(in srgb,var(--accent) 16%,transparent)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{background:color-mix(in srgb,var(--accent) 85%,var(--ink))}
+.btn.small{padding:6px 14px;font-size:.92rem}
+
+.stage{margin-top:40px;border:1px solid var(--line);border-radius:16px;background:
+  linear-gradient(var(--grid) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/40px 40px,var(--surface);padding:16px 16px 14px}
+.stage svg{display:block;width:100%;height:auto;cursor:crosshair;touch-action:manipulation}
+.stage .ax{stroke:var(--line);stroke-width:1}
+.stage .band{fill:var(--accent);fill-opacity:.2}
+.stage .curve{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round}
+.stage .pt{fill:var(--ink)}
+.stage .pop{animation:pop .5s ease-out}
+.stage .guide{stroke:var(--muted);stroke-width:1;stroke-dasharray:4 4}
+.stage .dot{fill:var(--accent)}
+@keyframes pop{from{r:14;fill-opacity:.25}to{r:4.5;fill-opacity:1}}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-top:12px}
+.ctrl .stats{margin-left:auto;font-weight:600;font-size:.95rem}
+.cap{margin:10px 0 0;font-size:.9rem;color:var(--muted);min-height:1.5em}
+
+section{padding:60px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.5rem);line-height:1.15;margin:0 0 8px}
+h3{font-family:var(--serif);font-weight:500}
+.sub{color:var(--muted);margin:0 0 24px;max-width:62ch}
+
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 8px}
+.chip{font:500 .95rem var(--sans);padding:6px 14px;border-radius:99px;border:1.5px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.chip small{margin-left:6px;opacity:.75;font-size:.85em}
+.count{color:var(--muted);font-size:.92rem;margin:0 0 14px;min-height:1.5em}
+
+.project{display:grid;grid-template-columns:220px 1fr;gap:12px 40px;padding:30px 0;border-top:1px solid var(--line)}
+.project[hidden]{display:none}
+.meta{color:var(--muted);font-size:.93rem}
+.meta strong{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+.project h3{font-size:1.5rem;line-height:1.25;margin:0 0 8px}
+.project p{margin:0 0 14px;max-width:68ch}
+dl.facts{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;max-width:68ch}
+dl.facts dt{font-weight:600}
+dl.facts dd{margin:0}
+.lim{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:0 18px;background:var(--warn-bg);border-left:4px solid var(--warn);padding:10px 14px;border-radius:0 8px 8px 0;margin-top:6px}
+.lim dt{color:var(--warn)}
+
+.bars{max-width:68ch;margin:6px 0 16px;display:grid;gap:7px}
+.bars .row{display:grid;grid-template-columns:minmax(120px,210px) 1fr 3.2em;gap:10px;align-items:center;font-size:.92rem}
+.track{height:12px;border-radius:6px;background:var(--line);overflow:hidden}
+.track i{display:block;height:100%;background:var(--accent);border-radius:6px;transform:scaleX(var(--v));transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .bars:not(.in) .track i{transform:scaleX(0)}
+.bars b{text-align:right;font-weight:600}
+.bars .note{font-size:.85rem;color:var(--muted)}
+
+.cols{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.cols h3{font-size:1.3rem;margin:0 0 12px}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:10px 0;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0;padding-top:0}
+.list b{font-weight:600}
+.list span{display:block;color:var(--muted);font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.pill{font-size:.92rem;padding:5px 12px;border-radius:99px;border:1.5px dashed var(--line);color:var(--muted)}
+.hint{font-size:.9rem;color:var(--muted);margin:0 0 20px}
+
+.timeline li{position:relative;padding-left:22px;border-top:0;padding-top:0;padding-bottom:18px}
+.timeline li::before{content:"";position:absolute;left:4px;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.timeline li::after{content:"";position:absolute;left:8px;top:1.4em;bottom:-4px;width:1px;background:var(--line)}
+.timeline li:last-child::after{display:none}
+
+.contact p{max-width:56ch;margin:0 0 20px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:.92rem}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;font-weight:500;opacity:0;pointer-events:none;transition:.25s;z-index:40}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:860px){
+  .hero{padding:36px 0}
+  .project{grid-template-columns:1fr;gap:6px}
+  .cols{grid-template-columns:1fr;gap:32px}
+  .ctrl .stats{margin-left:0;width:100%}
+  header.top .wrap{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .stage .pop{animation:none}
+  .track i{transition:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Govind Pathak</a>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch colour theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></svg>
+      </button>
+    </nav>
+  </div>
+  <div id="bar" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+  <div class="hero" id="top">
+    <div class="wrap">
+      <h1>I build and test machine learning systems.</h1>
+      <p class="lead">MSc graduate in artificial intelligence and machine learning. I like finding out how far a model can be trusted, and being honest about where it can&rsquo;t.</p>
+      <p class="status">Open to graduate roles and research positions, including PhD. Based in Limerick, Ireland, and open to relocate.</p>
+      <div class="actions">
+        <a class="btn primary" href="Govind_Pathak_CV.pdf">Download CV</a>
+        <a class="btn" href="https://github.com/Pathak-G">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/pathak-govind">LinkedIn</a>
+        <a class="btn" href="mailto:govindpathak392002@gmail.com">Email</a>
+      </div>
+
+      <div class="stage">
+        <svg id="chart" viewBox="0 0 900 340" role="img" aria-label="Illustration of a prediction curve with a shaded uncertainty band. The band narrows near each training point you add.">
+          <title>Illustration: uncertainty narrows as data increases</title>
+          <line class="ax" x1="24" y1="324" x2="876" y2="324"/>
+          <polygon class="band" id="band"/>
+          <polyline class="curve" id="curve"/>
+          <g id="pts"></g>
+          <g id="hov" style="display:none"><line class="guide" id="gl" y1="12" y2="324"/><circle class="dot" id="gd" r="5"/></g>
+        </svg>
+        <noscript><p class="cap">This illustration needs JavaScript. It shows an uncertainty band that narrows as training points are added.</p></noscript>
+        <div class="ctrl">
+          <button class="btn small primary" id="add" type="button">Add a point</button>
+          <button class="btn small" id="undo" type="button">Remove last</button>
+          <button class="btn small" id="reset" type="button">Start over</button>
+          <span class="stats" id="stats" aria-live="polite">Training points: 0</span>
+        </div>
+        <p class="cap" id="cap">Illustration, not real data. Click the chart to add a training point, or click a point to remove it. The shaded band is the model&rsquo;s uncertainty, and it is widest where it has seen the least data.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects" aria-labelledby="h-projects">
+    <div class="wrap">
+      <h2 id="h-projects">Projects</h2>
+      <p class="sub">Each project lists what I did, the result, and the limits of that result. Filter by topic, or pick a tool in Skills.</p>
+      <div class="filters" role="group" aria-label="Filter projects by topic">
+        <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-f="unc" aria-pressed="false">Uncertainty</button>
+        <button class="chip" type="button" data-f="cloud" aria-pressed="false">Cloud deployment</button>
+        <button class="chip" type="button" data-f="deep" aria-pressed="false">Deep and reinforcement learning</button>
+        <button class="chip" type="button" data-f="data" aria-pressed="false">Data analysis</button>
+      </div>
+      <p class="count" id="count" aria-live="polite"></p>
+
+      <article class="project" data-k="unc deep python pytorch optuna">
+        <div class="meta"><strong>MSc dissertation, 2026</strong>Python, PyTorch, Optuna</div>
+        <div>
+          <h3>Probabilistic federated learning for mental health prediction</h3>
+          <p>Built a federated learning pipeline across four clinical groups (obesity, hypertension, diabetes and general), using 36,259 NHANES participants to predict depression from PHQ-9. I implemented Bayesian logistic regression with Laplace-approximated uncertainty for each group and combined the groups by precision weighting, then compared it with FedAvg and an MC Dropout network. Supervised by Prof. Pepijn van de Ven.</p>
+          <div class="bars" role="img" aria-label="AUROC: precision-weighted Bayesian 0.699, FedAvg 0.701, MC Dropout network 0.651, FedAvg network 0.653.">
+            <div class="row"><span>Precision-weighted Bayesian</span><div class="track"><i style="--v:.796"></i></div><b>0.699</b></div>
+            <div class="row"><span>FedAvg</span><div class="track"><i style="--v:.804"></i></div><b>0.701</b></div>
+            <div class="row"><span>MC Dropout network</span><div class="track"><i style="--v:.604"></i></div><b>0.651</b></div>
+            <div class="row"><span>FedAvg network</span><div class="track"><i style="--v:.612"></i></div><b>0.653</b></div>
+            <div class="note">AUROC. The bars start at 0.5, which is chance, so gaps look larger than they are.</div>
+          </div>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>Precision-weighted aggregation matched FedAvg (AUROC 0.699 against 0.701; balanced accuracy 0.644 for both) and added an uncertainty estimate for each group. The MC Dropout network reached 0.651 AUROC against 0.653 for a FedAvg network.</dd>
+            <div class="lim"><dt>Limits</dt><dd>The uncertainty came at no measurable cost to accuracy, but it did not improve accuracy either. The data are survey data, not clinical records.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project" data-k="cloud python aws">
+        <div class="meta"><strong>2026</strong>Python, AWS SageMaker, Lambda, API Gateway, RDS, Bedrock, Flask</div>
+        <div>
+          <h3>Mental health risk prediction on AWS</h3>
+          <p>Deployed a text classifier (TF-IDF with logistic regression, trained on the GoEmotions dataset) as a real-time SageMaker endpoint. A Flask web interface on EC2 calls it, with a serverless backend of Lambda, API Gateway and an RDS MySQL database. Amazon Bedrock generates a plain-language explanation of each prediction. Six AWS services in total.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>A working application from user input to prediction, explanation and stored result.</dd>
+            <div class="lim"><dt>Limits</dt><dd>The explanations are written by a language model. I did not test how faithful they are to what the classifier actually relied on.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project" data-k="data python xgb sk">
+        <div class="meta"><strong>2026, group project</strong>Python, XGBoost, scikit-learn, Pandas, weather API</div>
+        <div>
+          <h3>Energy consumption prediction with limited data</h3>
+          <p>I led data preprocessing for a 90,000-row dataset and added weather features (temperature, humidity and wind speed) from an API. We compared XGBoost, linear regression, random forest and gradient boosting, then ran an ablation across training-data fractions.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>XGBoost gave the lowest RMSE (0.6386). Adding synthetic training data made performance worse, which we attributed to distribution mismatch.</dd>
+            <div class="lim"><dt>Limits</dt><dd>One dataset, so the ranking of models may not carry over to other data.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project" data-k="deep python tf">
+        <div class="meta"><strong>2026, two-person project</strong>Python, TensorFlow, Keras, Gymnasium</div>
+        <div>
+          <h3>DQN against Double DQN on Atari Atlantis</h3>
+          <p>I led a comparison of the two agents over 1,800 episodes. Training was using the GPU poorly, so I traced the cause to a list-based replay buffer and replaced it with a pre-allocated NumPy circular buffer, which fixed the problem and cut memory use.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>Double DQN&rsquo;s 100-episode average score was 14.2% higher.</dd>
+            <div class="lim"><dt>Limits</dt><dd>One game and one training setup, so I would not generalise the 14.2% figure.</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="project" data-k="deep">
+        <div class="meta"><strong>Group project</strong>Faster R-CNN, ResNet-50 FPN</div>
+        <div>
+          <h3>Bone fracture detection</h3>
+          <p>Trained a Faster R-CNN model with a ResNet-50 FPN backbone to detect fractures in bone images.</p>
+          <dl class="facts">
+            <dt>Result</dt>
+            <dd>mAP@0.5 of 0.6294.</dd>
+            <div class="lim"><dt>Limits</dt><dd>A coursework model with moderate accuracy. It is not a clinical tool.</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="h-skills">
+    <div class="wrap">
+      <h2 id="h-skills">Skills</h2>
+      <p class="sub">What I use most, in the order I use it.</p>
+      <p class="hint">Tools with a number are buttons. The number is how many projects above use that tool; press one to filter the projects.</p>
+      <div class="cols">
+        <div>
+          <h3>Languages and data</h3>
+          <ul class="list">
+            <li><b>Python</b> (main language), SQL, R, C#
+              <div class="chips"><button class="chip" type="button" data-f="python" aria-pressed="false">Python</button></div></li>
+            <li><b>Data work</b><span>Pandas, NumPy, data cleaning, feature engineering, Tableau, Excel (Power Query, pivot tables)</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Machine learning and cloud</h3>
+          <ul class="list">
+            <li><b>Machine learning</b><span>Bayesian logistic regression, MC Dropout, federated learning, reinforcement learning</span>
+              <div class="chips">
+                <button class="chip" type="button" data-f="pytorch" aria-pressed="false">PyTorch</button>
+                <button class="chip" type="button" data-f="tf" aria-pressed="false">TensorFlow and Keras</button>
+                <button class="chip" type="button" data-f="sk" aria-pressed="false">scikit-learn</button>
+                <button class="chip" type="button" data-f="xgb" aria-pressed="false">XGBoost</button>
+                <button class="chip" type="button" data-f="optuna" aria-pressed="false">Optuna</button>
+              </div></li>
+            <li><b>Cloud and tools</b><span>AWS (SageMaker, Lambda, API Gateway, RDS, EC2, Bedrock), Flask, Git</span>
+              <div class="chips"><button class="chip" type="button" data-f="aws" aria-pressed="false">AWS</button></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="background" aria-labelledby="h-background">
+    <div class="wrap">
+      <h2 id="h-background">Background</h2>
+      <p class="sub">Education, work and one publication.</p>
+      <div class="cols">
+        <div>
+          <h3>Education</h3>
+          <ul class="list timeline">
+            <li><b>MSc Artificial Intelligence and Machine Learning</b><span>University of Limerick, 2025 to 2026. First Class Honours, QCA 3.45 out of 4.0.</span></li>
+            <li><b>B.E. Computer Science and Engineering (AI and ML)</b><span>University of Mumbai, 2021 to 2025. First Class Honours, CGPA 8.70 out of 10.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Experience</h3>
+          <ul class="list timeline">
+            <li><b>Education support worker (academic notetaker)</b><span>Servisource at TUS Moylish, from September 2026.</span></li>
+            <li><b>Data science and data analysis intern</b><span>Cognifyz Technologies, remote, June to August 2024. Cleaned and analysed a restaurant dataset.</span></li>
+            <li><b>Tutor and academic mentor</b><span>Wisdom Classes, Mumbai, 2020 to 2025. Maths and Science for Grades 8 to 12.</span></li>
+          </ul>
+        </div>
+      </div>
+      <h3 style="font-size:1.3rem;margin:40px 0 12px">Publication and certificates</h3>
+      <ul class="list">
+        <li><b>Streamlining Coding with Pre-Defined Syntax: A Visual Approach to Programming</b><span>International Journal of Research Publication and Reviews, Vol 6, Issue 4, April 2025.</span></li>
+        <li><b>Certificates</b><span>AWS Academy Cloud Foundations and Machine Learning Foundations (2026); IBM AI Fundamentals (2025); Epigeum Research Integrity (2026); NPTEL Natural Language Processing, IIT Kharagpur.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="h-contact">
+    <div class="wrap">
+      <h2 id="h-contact">Contact</h2>
+      <p>I am looking for graduate roles in machine learning, data and software, and for research positions. The quickest way to reach me is email.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:govindpathak392002@gmail.com">Email me</a>
+        <button class="btn" id="copy" type="button">Copy email address</button>
+        <a class="btn" href="https://www.linkedin.com/in/pathak-govind">LinkedIn</a>
+        <a class="btn" href="https://github.com/Pathak-G">GitHub</a>
+        <a class="btn" href="Govind_Pathak_CV.pdf">Download CV</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Govind Pathak. Last updated October 2026.</div></footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)},$$=function(s){return [].slice.call(document.querySelectorAll(s))};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* theme */
+  $('#theme').onclick=function(){
+    var t=document.documentElement.dataset.theme==='dark'?'light':'dark';
+    document.documentElement.dataset.theme=t;
+    try{localStorage.setItem('theme',t)}catch(e){}
+  };
+
+  /* scroll progress + active nav */
+  var bar=$('#bar'),tick=false;
+  addEventListener('scroll',function(){
+    if(tick)return;tick=true;
+    requestAnimationFrame(function(){
+      var h=document.documentElement.scrollHeight-innerHeight;
+      bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';tick=false;
+    });
+  },{passive:true});
+  var links=$$('nav a');
+  var spy=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting)links.forEach(function(a){
+      if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});});
+  },{rootMargin:'-40% 0px -55% 0px'});
+  $$('main section').forEach(function(s){spy.observe(s)});
+
+  /* bars reveal */
+  var bio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');bio.unobserve(e.target)}})},{threshold:.5});
+  $$('.bars').forEach(function(b){bio.observe(b)});
+
+  /* project filters */
+  var projects=$$('.project'),chips=$$('[data-f]'),active='all',countEl=$('#count');
+  chips.forEach(function(c){
+    var k=c.dataset.f;
+    if(k!=='all'&&c.closest('#skills')){
+      var n=projects.filter(function(p){return p.dataset.k.split(' ').indexOf(k)>-1}).length;
+      var s=document.createElement('small');s.textContent=n;c.appendChild(s);
+    }
+    c.addEventListener('click',function(){
+      active=(active===k&&k!=='all')?'all':k;
+      applyFilter();
+      if(c.closest('#skills'))$('#projects').scrollIntoView({behavior:reduce?'auto':'smooth'});
+    });
+  });
+  function applyFilter(){
+    var shown=0;
+    projects.forEach(function(p){
+      var ok=active==='all'||p.dataset.k.split(' ').indexOf(active)>-1;
+      p.hidden=!ok;if(ok)shown++;
+    });
+    chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.dataset.f===active))});
+    countEl.textContent=active==='all'?'':'Showing '+shown+' of '+projects.length+' projects.';
+  }
+
+  /* copy email */
+  var toast=$('#toast'),tt;
+  $('#copy').onclick=function(){
+    var msg='Email address copied';
+    (navigator.clipboard?navigator.clipboard.writeText('govindpathak392002@gmail.com'):Promise.reject()).catch(function(){msg='Could not copy. Use the Email me button instead.'}).then(function(){
+      toast.textContent=msg;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('on')},2200);
+    });
+  };
+
+  /* uncertainty stage */
+  var svg=$('#chart'),band=$('#band'),curve=$('#curve'),ptsG=$('#pts'),hov=$('#hov'),gl=$('#gl'),gd=$('#gd');
+  var statsEl=$('#stats'),cap=$('#cap'),capText=cap.textContent;
+  var X0=24,X1=876,BASE=324,pts=[],xs=[],cur,tgt,raf,intro;
+  var seeds=[[420,-6],[120,8],[640,5],[260,-9],[760,6],[60,-5],[540,7],[340,-4]];
+  function f(x){return 170-62*Math.sin(x/140)-26*Math.sin(x/56)}
+  for(var x=X0;x<=X1;x+=6)xs.push(x);
+  curve.setAttribute('points',xs.map(function(x){return x+','+f(x).toFixed(1)}).join(' '));
+  function wAt(x){var d=1e9;pts.forEach(function(p){d=Math.min(d,Math.abs(x-p.x))});return 8+78*(1-Math.exp(-d/110))}
+  function paint(w){
+    var up=[],lo=[];
+    xs.forEach(function(x,i){var y=f(x);up.push(x+','+(y-w[i]).toFixed(1));lo.unshift(x+','+(y+w[i]).toFixed(1))});
+    band.setAttribute('points',up.concat(lo).join(' '));
+  }
+  function update(newest){
+    tgt=xs.map(wAt);
+    ptsG.innerHTML=pts.map(function(p,i){return '<circle class="pt'+(i===newest?' pop':'')+'" cx="'+p.x+'" cy="'+p.y.toFixed(1)+'" r="4.5"/>'}).join('');
+    var avg=tgt.reduce(function(a,b){return a+b},0)/tgt.length;
+    statsEl.textContent='Training points: '+pts.length+'. Average band width: '+Math.round(avg*2);
+    cancelAnimationFrame(raf);
+    if(reduce||!cur){cur=tgt.slice();paint(cur);return}
+    var from=cur.slice(),t0=performance.now();
+    (function step(t){
+      var k=Math.min(1,(t-t0)/320);k=1-Math.pow(1-k,3);
+      cur=from.map(function(v,i){return v+(tgt[i]-v)*k});paint(cur);
+      if(k<1)raf=requestAnimationFrame(step);
+    })(t0);
+  }
+  function addAt(x,jit){pts.push({x:x,y:f(x)+jit});update(pts.length-1)}
+  function stopIntro(){clearInterval(intro)}
+  function play(){
+    stopIntro();pts=[];cur=null;update();
+    if(reduce){seeds.forEach(function(s){pts.push({x:s[0],y:f(s[0])+s[1]})});update();return}
+    var i=0;
+    intro=setInterval(function(){
+      if(i>=seeds.length){stopIntro();return}
+      addAt(seeds[i][0],seeds[i][1]);i++;
+    },260);
+  }
+  function svgX(e){var r=svg.getBoundingClientRect();return (e.clientX-r.left)/r.width*900}
+  svg.addEventListener('click',function(e){
+    stopIntro();
+    var x=Math.max(X0,Math.min(X1,svgX(e))),hit=-1;
+    pts.forEach(function(p,i){if(Math.abs(p.x-x)<12)hit=i});
+    if(hit>-1){pts.splice(hit,1);update()}else addAt(x,(Math.random()-.5)*18);
+  });
+  svg.addEventListener('pointermove',function(e){
+    var x=Math.max(X0,Math.min(X1,svgX(e)));
+    hov.style.display='';gl.setAttribute('x1',x);gl.setAttribute('x2',x);
+    gd.setAttribute('cx',x);gd.setAttribute('cy',f(x));
+    cap.textContent='Band half-width at this position: '+wAt(x).toFixed(0)+' (illustrative units).';
+  });
+  svg.addEventListener('pointerleave',function(){hov.style.display='none';cap.textContent=capText});
+  $('#add').onclick=function(){stopIntro();addAt(X0+Math.random()*(X1-X0),(Math.random()-.5)*18)};
+  $('#undo').onclick=function(){stopIntro();pts.pop();update()};
+  $('#reset').onclick=play;
+  play();
+})();
+</script>
+</body>
+</html>
